@@ -1,3 +1,6 @@
+# From the database created in chatbot_database.py, create training data files for Chatbot AI
+# to train with
+
 import sqlite3
 import pandas as pd
 
