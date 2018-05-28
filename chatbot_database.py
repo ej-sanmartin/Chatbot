@@ -1,3 +1,5 @@
+# Creating a database with sqlite from seperate file or API
+
 import sqlite3
 import json
 from datetime import datetime
@@ -8,6 +10,7 @@ sql_transaction = []
 connection = sqlite3.connect('{}.db'.format(timeframe))
 c = connection.cursor()
 
+# Adjust according to how data set is organized (ex. colummn names)
 def create_table():
     c.execute("""CREATE TABLE IF NOT EXIST parent_reply
     (parent_id TEXT Primary KEY, comment_id TEXT UNIQUE, parent TEXT, comment TEXT,
@@ -36,7 +39,7 @@ if __name__ == "__main__":
     paired_rows = 0
     
     # Open location of file
-    with open("#Location of file => J:/chatdata/reddit_data/{}/RC{}".format(timeframe.split("-")[0], timeframe), buffer=1000) as f:
+    with open("#Location of file => ex: J:/chatdata/reddit_data/{}/RC{}".format(timeframe.split("-")[0], timeframe), buffer=1000) as f:
         for row in f:
             row_counter += 1
             row = json.loads(row)
